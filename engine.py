@@ -80,8 +80,8 @@ class MovieRecommender:
 
     def get_instances(self, movie_name):
 
-        ratings = pd.read_csv("/kaggle/input/movielens-20m-dataset/rating.csv")
-        movies = pd.read_csv("/kaggle/input/movielens-20m-dataset/movie.csv")
+        ratings = pd.read_csv("../data/ratings.csv")
+        movies = pd.read_csv("../data/movies.csv")
         movie_titles = dict(zip(movies["movieId"], movies["title"]))
         movie_table = pd.DataFrame(
             movie_titles.items(), columns=["movie_id", "movie_name"]
