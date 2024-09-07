@@ -75,12 +75,6 @@ class MovieRecommender:
         neighbour_ids.pop(0)
         return neighbour_ids
 
-    def recommend(self, similar_ids, movie_titles):
-
-        print("\033[1m" f"\nRecommendation for movie : {self.movie_name}\n")
-        for i in similar_ids:
-            print("\033[1m" + "\033[92m" + movie_titles[i])
-
     def get_instances(self, movie_name):
 
         ratings = pd.read_csv(f"{HOME}/data/ratings.csv")
@@ -98,5 +92,8 @@ class MovieRecommender:
         idd_ = int(idd_[idd_.movie_id.notna()]["movie_id"].iloc[0])
         return ratings, movies, movie_titles, idd_
 
+    def recommend(self, similar_ids, movie_titles):
 
-MovieRecommender("Spider-man", number_of_recommend=5)
+        print("\033[1m" f"\nRecommendation for movie : {self.movie_name}\n")
+        recommendations = [movie_titles[i] for i in similar_ids]
+        return recommendations
