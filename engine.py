@@ -1,8 +1,11 @@
+import os
 import numpy as np
 import pandas as pd
 import sklearn
 from scipy.sparse import csr_matrix
 from sklearn.neighbors import NearestNeighbors
+
+HOME = os.getcwd()
 
 
 class MovieRecommender:
@@ -80,8 +83,8 @@ class MovieRecommender:
 
     def get_instances(self, movie_name):
 
-        ratings = pd.read_csv("../data/ratings.csv")
-        movies = pd.read_csv("../data/movies.csv")
+        ratings = pd.read_csv(f"{HOME}/data/ratings.csv")
+        movies = pd.read_csv(f"{HOME}/data/movies.csv")
         movie_titles = dict(zip(movies["movieId"], movies["title"]))
         movie_table = pd.DataFrame(
             movie_titles.items(), columns=["movie_id", "movie_name"]
@@ -94,3 +97,6 @@ class MovieRecommender:
         )
         idd_ = int(idd_[idd_.movie_id.notna()]["movie_id"].iloc[0])
         return ratings, movies, movie_titles, idd_
+
+
+MovieRecommender("Spider-man", number_of_recommend=5)
