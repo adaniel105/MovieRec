@@ -31,7 +31,7 @@ class MovieRecommender:
             recommendations = self.recommend(neighbour_ids, movie_titles)
             return recommendations
         except:
-            print("Movie not found!")
+            print("Movie not found")
 
     def matrix(self, df):
 
