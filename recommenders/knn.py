@@ -9,8 +9,7 @@ HOME = os.getcwd()
 
 
 class MovieRecommender:
-    def __init__(self, movie_name, number_of_recommend):
-
+    def create_rec(self, movie_name, number_of_recommend):
         print("Finding similar movies...")
         try:
             ratings, movies, movie_titles, idd_ = self.get_instances(movie_name)
@@ -29,10 +28,10 @@ class MovieRecommender:
                 self.movie_inv_mapper,
             ) = self.matrix(self.ratings)
             neighbour_ids = self.predict_(self.idd_, matrix_crs, k=number_of_recommend)
-            self.recommend(neighbour_ids, movie_titles)
-            print("\nDone")
+            recommendations = self.recommend(neighbour_ids, movie_titles)
+            return recommendations
         except:
-            print("Movie not found")
+            print("Movie not found!")
 
     def matrix(self, df):
 
@@ -93,7 +92,4 @@ class MovieRecommender:
         return ratings, movies, movie_titles, idd_
 
     def recommend(self, similar_ids, movie_titles):
-
-        print("\033[1m" f"\nRecommendation for movie : {self.movie_name}\n")
-        recommendations = [movie_titles[i] for i in similar_ids]
-        return recommendations
+        return [movie_titles[i] for i in similar_ids]
