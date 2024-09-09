@@ -51,11 +51,11 @@ class MovieRecommender:
         user_index = [user_mapper[i] for i in df["userId"]]
         movie_index = [movie_mapper[i] for i in df["movieId"]]
 
-        matrix = csr_matrix(
+        matrix_crs = csr_matrix(
             (df["rating"], (movie_index, user_index)), shape=(movie_unique, user_unique)
         )
 
-        return matrix, user_mapper, movie_mapper, user_inv_mapper, movie_inv_mapper
+        return matrix_crs, user_mapper, movie_mapper, user_inv_mapper, movie_inv_mapper
 
     def predict_(self, movie_id, data, k, metric="cosine", show_distance=False):
 
