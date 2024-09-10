@@ -6,6 +6,13 @@
   <title>Movie Recommender System</title>
 </head>
 <body>
-  <h1>You might probably like {{ recommendation }}!</h1>
+  <h1>Based on your preferences, you might probably like: </h1>
+  <ul>
+    {% for movie in movie_list %}
+      <li>
+        {{ movie }}
+      </li>
+    {% endfor %}
+  </ul>
 </body>
 </html>
