@@ -6,13 +6,20 @@
   <title>Movie Recommender System</title>
 </head>
 <body>
-  <h1>Based on your preferences, you might probably like: </h1>
-  <ul>
-    {% for movie in movie_list %}
-      <li>
-        {{ movie }}
-      </li>
-    {% endfor %}
-  </ul>
+  <h1>MovieRec</h1>
+  <form action="{{ url_for('recommend') }}" method="post">
+    <input type="text" name="movie_name" placeholder="Enter movie here...">
+    <button type="submit">Enter</button>
+  </form>
+
+  {% if movie_list %}
+    <ul>
+      {% for movie in movie_list %}
+        <li>
+          {{ movie }}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
 </body>
 </html>
