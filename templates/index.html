@@ -20,19 +20,16 @@
     </div>
   </header>
 
-
-  {% if movie_list %}
+  <div class="movie-preview">
+    {% if movie_list %}
     <ul>
       {% for movie in movie_list %}
         <li>
-          <div>
-            <img src="" alt="movie">
-            {{ movie }}
-            <p></p>
-          </div>
+          {{ movie }}
         </li>
       {% endfor %}
     </ul>
-  {% endif %}
+    {% endif %}
+  </div>
 </body>
 </html>
