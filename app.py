@@ -4,6 +4,7 @@ from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from pathlib import Path
 from recommenders.knn import MovieRecommender
+from api import fetch_metadata
 
 static_folder = Path(__file__).parent.resolve(strict=True) / "static"
 template_folder = Path(__file__).parent.resolve(strict=True) / "templates"
@@ -27,7 +28,13 @@ async def recommend(
     movie_list = recommendations.create_rec(
         movie_name=movie_name, number_of_recommend=number_of_recommend
     )
+    overview = fetch_metadata(title=movie_name)
     return templates.TemplateResponse(
         "index.html",
-        {"request": request, "movie_list": movie_list, "movie_name": movie_name},
+        {
+            "request": request,
+            "movie_list": movie_list,
+            "movie_name": movie_name,
+            "overview": overview,
+        },
     )
