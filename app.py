@@ -28,17 +28,13 @@ async def recommend(
     movie_list = recommendations.create_rec(
         movie_name=movie_name, number_of_recommend=number_of_recommend
     )
-    overviews = []
-    for movie in movie_list:
-        movie = movie.split("(")[0]
-        res = fetch_metadata(title=movie)
-        overviews.append(res)
+    overview = fetch_metadata(title=movie_list[0])
     return templates.TemplateResponse(
         "index.html",
         {
             "request": request,
             "movie_list": movie_list,
             "movie_name": movie_name,
-            "overviews": overviews,
+            "overviews": overview,
         },
     )
