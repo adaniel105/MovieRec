@@ -25,10 +25,12 @@
     <ul>
       {% for movie in movie_list %}
         <li>
-          {{ movie }} :
-          <p>
-            {{ overview }}
-          </p>
+          {{ movie }}:
+          {% if overviews %}
+            <p>
+                {{ overviews[1] }}
+            </p>
+          {% endif %}
         </li>
       {% endfor %}
     </ul>
