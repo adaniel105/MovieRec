@@ -4,7 +4,6 @@ from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from pathlib import Path
 from recommenders.knn import MovieRecommender
-from api.tmdb import fetch_metadata
 
 static_folder = Path(__file__).parent.resolve(strict=True) / "static"
 template_folder = Path(__file__).parent.resolve(strict=True) / "templates"
@@ -28,23 +27,11 @@ async def recommend(
     movie_list = recommendations.create_rec(
         movie_name=movie_name, number_of_recommend=number_of_recommend
     )
-    overviews = []
-    res = ""
-    for movie in movie_list:
-        movie = movie.split("(")[0].strip()
-        try:
-            res = fetch_metadata(movie)
-        except:
-            err = "Movie overview unavailable"
-            overviews.append(err)
-        overviews.append(res)
-        # dict mapping
     return templates.TemplateResponse(
         "index.html",
         {
             "request": request,
             "movie_list": movie_list,
             "movie_name": movie_name,
-            "overviews": overviews,
         },
     )
