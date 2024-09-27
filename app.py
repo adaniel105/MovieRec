@@ -29,14 +29,15 @@ async def recommend(
         movie_name=movie_name, number_of_recommend=number_of_recommend
     )
     overviews = []
+    res = ""
     for movie in movie_list:
-        movie = movie[0].split("(")[0].strip()
+        movie = movie.split("(")[0].strip()
         try:
-            res = fetch_metadata(title=movie)
-            overviews.append(res)
+            res = fetch_metadata(movie)
         except:
             err = "Movie overview unavailable"
             overviews.append(err)
+        overviews.append(res)
         # dict mapping
     return templates.TemplateResponse(
         "index.html",
