@@ -8,16 +8,16 @@
           "base_uri": "https://localhost:8080/"
         },
         "id": "oa2enTrgI6Wd",
-        "outputId": "eac2a001-7e93-41a5-a928-a6f4e8441379"
+        "outputId": "7c0aeeea-cc98-470e-f25b-e8eee2d9e51d"
       },
       "outputs": [
         {
-          "name": "stdout",
           "output_type": "stream",
+          "name": "stdout",
           "text": [
             "Collecting LightFM\n",
             "  Downloading lightfm-1.17.tar.gz (316 kB)\n",
-            "\u001b[2K     \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m316.4/316.4 kB\u001b[0m \u001b[31m5.9 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\n",
+            "\u001b[?25l     \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m0.0/316.4 kB\u001b[0m \u001b[31m?\u001b[0m eta \u001b[36m-:--:--\u001b[0m\r\u001b[2K     \u001b[91m━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m\u001b[90m╺\u001b[0m\u001b[90m━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m184.3/316.4 kB\u001b[0m \u001b[31m5.3 MB/s\u001b[0m eta \u001b[36m0:00:01\u001b[0m\r\u001b[2K     \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m316.4/316.4 kB\u001b[0m \u001b[31m5.2 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\n",
             "\u001b[?25h  Preparing metadata (setup.py) ... \u001b[?25l\u001b[?25hdone\n",
             "Requirement already satisfied: numpy in /usr/local/lib/python3.10/dist-packages (from LightFM) (1.26.4)\n",
             "Requirement already satisfied: scipy>=0.17.0 in /usr/local/lib/python3.10/dist-packages (from LightFM) (1.13.1)\n",
@@ -29,7 +29,13 @@
             "Requirement already satisfied: certifi>=2017.4.17 in /usr/local/lib/python3.10/dist-packages (from requests->LightFM) (2024.8.30)\n",
             "Requirement already satisfied: joblib>=1.2.0 in /usr/local/lib/python3.10/dist-packages (from scikit-learn->LightFM) (1.4.2)\n",
             "Requirement already satisfied: threadpoolctl>=3.1.0 in /usr/local/lib/python3.10/dist-packages (from scikit-learn->LightFM) (3.5.0)\n",
-            "Building wheels for collected packages: LightFM\n"
+            "Building wheels for collected packages: LightFM\n",
+            "  Building wheel for LightFM (setup.py) ... \u001b[?25l\u001b[?25hdone\n",
+            "  Created wheel for LightFM: filename=lightfm-1.17-cp310-cp310-linux_x86_64.whl size=808331 sha256=b6d699aa262e73549bf1bc4098c1f8f73b64dc7224a583d4b278700c313b380d\n",
+            "  Stored in directory: /root/.cache/pip/wheels/4f/9b/7e/0b256f2168511d8fa4dae4fae0200fdbd729eb424a912ad636\n",
+            "Successfully built LightFM\n",
+            "Installing collected packages: LightFM\n",
+            "Successfully installed LightFM-1.17\n"
           ]
         }
       ],
@@ -42,15 +48,15 @@
       "execution_count": null,
       "metadata": {
         "colab": {
-          "background_save": true
+          "base_uri": "https://localhost:8080/"
         },
         "id": "6743jtOIIxJe",
-        "outputId": "2b7f953d-3b2d-4d44-8246-594fffbe0810"
+        "outputId": "01c5fe4c-b020-4d0c-a478-afee71f21ef2"
       },
       "outputs": [
         {
-          "name": "stdout",
           "output_type": "stream",
+          "name": "stdout",
           "text": [
             "Precision: train 0.35, test 0.04.\n",
             "AUC: train 0.97, test 0.92.\n"
@@ -82,9 +88,25 @@
       "cell_type": "code",
       "execution_count": null,
       "metadata": {
-        "id": "NVsW4l91Kdm0"
+        "id": "NVsW4l91Kdm0",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "4001767a-ad74-46ae-f512-3ee03a096616"
       },
-      "outputs": [],
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([-0.76900125, -1.520023  , -0.6437492 , -1.4554318 , -0.9598947 ],\n",
+              "      dtype=float32)"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 3
+        }
+      ],
       "source": [
         "import pandas as pd\n",
         "score = model.predict(1, [47,50, 223, 235,349]) #takes in user and item id, optionally other features such as item and user features.\n",
@@ -96,9 +118,6 @@
       "cell_type": "code",
       "execution_count": null,
       "metadata": {
-        "colab": {
-          "background_save": true
-        },
         "id": "2NluKm04kVgy"
       },
       "outputs": [],
@@ -114,21 +133,27 @@
       "execution_count": null,
       "metadata": {
         "colab": {
-          "background_save": true
+          "base_uri": "https://localhost:8080/",
+          "height": 206
         },
         "id": "OeDbgiW6k1ty",
-        "outputId": "dfb0eddf-3151-4bdd-f57d-c19644d66454"
+        "outputId": "c129e7ae-bdb0-4cf2-c4ad-14d24d59019a"
       },
       "outputs": [
         {
+          "output_type": "execute_result",
           "data": {
-            "application/vnd.google.colaboratory.intrinsic+json": {
-              "summary": "{\n  \"name\": \"sample\",\n  \"rows\": 5,\n  \"fields\": [\n    {\n      \"column\": \"userId\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 0,\n        \"min\": 1,\n        \"max\": 1,\n        \"num_unique_values\": 1,\n        \"samples\": [\n          1\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"itemId\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 130,\n        \"min\": 47,\n        \"max\": 349,\n        \"num_unique_values\": 5,\n        \"samples\": [\n          47\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"scores\",\n      \"properties\": {\n        \"dtype\": \"float32\",\n        \"num_unique_values\": 5,\n        \"samples\": [\n          -1.3243130445480347\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    }\n  ]\n}",
-              "type": "dataframe"
-            },
+            "text/plain": [
+              "   userId  itemId    scores\n",
+              "2       1     223 -0.643749\n",
+              "0       1      47 -0.769001\n",
+              "4       1     349 -0.959895\n",
+              "3       1     235 -1.455432\n",
+              "1       1      50 -1.520023"
+            ],
             "text/html": [
               "\n",
-              "  <div id=\"df-92b6f44f-367f-4d10-a910-0fa3670707c8\" class=\"colab-df-container\">\n",
+              "  <div id=\"df-920404f9-5446-4bf8-965b-d0e5cabb3238\" class=\"colab-df-container\">\n",
               "    <div>\n",
               "<style scoped>\n",
               "    .dataframe tbody tr th:only-of-type {\n",
@@ -154,34 +179,34 @@
               "  </thead>\n",
               "  <tbody>\n",
               "    <tr>\n",
-              "      <th>1</th>\n",
+              "      <th>2</th>\n",
               "      <td>1</td>\n",
-              "      <td>50</td>\n",
-              "      <td>-1.097931</td>\n",
+              "      <td>223</td>\n",
+              "      <td>-0.643749</td>\n",
               "    </tr>\n",
               "    <tr>\n",
               "      <th>0</th>\n",
               "      <td>1</td>\n",
               "      <td>47</td>\n",
-              "      <td>-1.324313</td>\n",
-              "    </tr>\n",
-              "    <tr>\n",
-              "      <th>2</th>\n",
-              "      <td>1</td>\n",
-              "      <td>223</td>\n",
-              "      <td>-1.495816</td>\n",
-              "    </tr>\n",
-              "    <tr>\n",
-              "      <th>3</th>\n",
-              "      <td>1</td>\n",
-              "      <td>235</td>\n",
-              "      <td>-1.500214</td>\n",
+              "      <td>-0.769001</td>\n",
               "    </tr>\n",
               "    <tr>\n",
               "      <th>4</th>\n",
               "      <td>1</td>\n",
               "      <td>349</td>\n",
-              "      <td>-1.757110</td>\n",
+              "      <td>-0.959895</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>1</td>\n",
+              "      <td>235</td>\n",
+              "      <td>-1.455432</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>1</td>\n",
+              "      <td>50</td>\n",
+              "      <td>-1.520023</td>\n",
               "    </tr>\n",
               "  </tbody>\n",
               "</table>\n",
@@ -189,7 +214,7 @@
               "    <div class=\"colab-df-buttons\">\n",
               "\n",
               "  <div class=\"colab-df-container\">\n",
-              "    <button class=\"colab-df-convert\" onclick=\"convertToInteractive('df-92b6f44f-367f-4d10-a910-0fa3670707c8')\"\n",
+              "    <button class=\"colab-df-convert\" onclick=\"convertToInteractive('df-920404f9-5446-4bf8-965b-d0e5cabb3238')\"\n",
               "            title=\"Convert this dataframe to an interactive table.\"\n",
               "            style=\"display:none;\">\n",
               "\n",
@@ -241,12 +266,12 @@
               "\n",
               "    <script>\n",
               "      const buttonEl =\n",
-              "        document.querySelector('#df-92b6f44f-367f-4d10-a910-0fa3670707c8 button.colab-df-convert');\n",
+              "        document.querySelector('#df-920404f9-5446-4bf8-965b-d0e5cabb3238 button.colab-df-convert');\n",
               "      buttonEl.style.display =\n",
               "        google.colab.kernel.accessAllowed ? 'block' : 'none';\n",
               "\n",
               "      async function convertToInteractive(key) {\n",
-              "        const element = document.querySelector('#df-92b6f44f-367f-4d10-a910-0fa3670707c8');\n",
+              "        const element = document.querySelector('#df-920404f9-5446-4bf8-965b-d0e5cabb3238');\n",
               "        const dataTable =\n",
               "          await google.colab.kernel.invokeFunction('convertToInteractive',\n",
               "                                                    [key], {});\n",
@@ -266,8 +291,8 @@
               "  </div>\n",
               "\n",
               "\n",
-              "<div id=\"df-c120b1e7-d56e-49cf-9b9a-98b5b36f062a\">\n",
-              "  <button class=\"colab-df-quickchart\" onclick=\"quickchart('df-c120b1e7-d56e-49cf-9b9a-98b5b36f062a')\"\n",
+              "<div id=\"df-34ac9b42-52d5-44e8-9625-b16e6d8b1c14\">\n",
+              "  <button class=\"colab-df-quickchart\" onclick=\"quickchart('df-34ac9b42-52d5-44e8-9625-b16e6d8b1c14')\"\n",
               "            title=\"Suggest charts\"\n",
               "            style=\"display:none;\">\n",
               "\n",
@@ -386,7 +411,7 @@
               "    }\n",
               "    (() => {\n",
               "      let quickchartButtonEl =\n",
-              "        document.querySelector('#df-c120b1e7-d56e-49cf-9b9a-98b5b36f062a button');\n",
+              "        document.querySelector('#df-34ac9b42-52d5-44e8-9625-b16e6d8b1c14 button');\n",
               "      quickchartButtonEl.style.display =\n",
               "        google.colab.kernel.accessAllowed ? 'block' : 'none';\n",
               "    })();\n",
@@ -396,18 +421,13 @@
               "    </div>\n",
               "  </div>\n"
             ],
-            "text/plain": [
-              "   userId  itemId    scores\n",
-              "1       1      50 -1.097931\n",
-              "0       1      47 -1.324313\n",
-              "2       1     223 -1.495816\n",
-              "3       1     235 -1.500214\n",
-              "4       1     349 -1.757110"
-            ]
+            "application/vnd.google.colaboratory.intrinsic+json": {
+              "type": "dataframe",
+              "summary": "{\n  \"name\": \"sample\",\n  \"rows\": 5,\n  \"fields\": [\n    {\n      \"column\": \"userId\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 0,\n        \"min\": 1,\n        \"max\": 1,\n        \"num_unique_values\": 1,\n        \"samples\": [\n          1\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"itemId\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 130,\n        \"min\": 47,\n        \"max\": 349,\n        \"num_unique_values\": 5,\n        \"samples\": [\n          47\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"scores\",\n      \"properties\": {\n        \"dtype\": \"float32\",\n        \"num_unique_values\": 5,\n        \"samples\": [\n          -0.7690012454986572\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    }\n  ]\n}"
+            }
           },
-          "execution_count": 5,
           "metadata": {},
-          "output_type": "execute_result"
+          "execution_count": 5
         }
       ],
       "source": [
@@ -434,30 +454,105 @@
     {
       "cell_type": "code",
       "source": [
-        "get_recs(movies)"
+        "hold = get_recs(movies)\n",
+        "hold.pop(0)"
       ],
       "metadata": {
-        "id": "6BXE4E4RwR10",
-        "outputId": "69440c56-d322-44b4-a1ba-274472924fc7",
         "colab": {
-          "base_uri": "https://localhost:8080/"
-        }
+          "base_uri": "https://localhost:8080/",
+          "height": 35
+        },
+        "id": "6BXE4E4RwR10",
+        "outputId": "67453c6c-902a-4c60-c74b-376b9e43d20f"
       },
-      "execution_count": 44,
+      "execution_count": null,
       "outputs": [
         {
           "output_type": "execute_result",
           "data": {
             "text/plain": [
-              "['Seven (a.k.a. Se7en) (1995)',\n",
-              " 'Usual Suspects, The (1995)',\n",
-              " 'Clerks (1994)',\n",
-              " 'Ed Wood (1994)',\n",
-              " 'Clear and Present Danger (1994)']"
+              "'Seven (a.k.a. Se7en) (1995)'"
+            ],
+            "application/vnd.google.colaboratory.intrinsic+json": {
+              "type": "string"
+            }
+          },
+          "metadata": {},
+          "execution_count": 10
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "item_features = data['item_features']\n",
+        "movie_labels = data[\"item_feature_labels\"]"
+      ],
+      "metadata": {
+        "id": "djCvhbHC2b0W"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "movie_labels.size"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "ks-DU2K62o5R",
+        "outputId": "d5768824-23c4-462f-bd12-2d313be30b2b"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "1682"
             ]
           },
           "metadata": {},
-          "execution_count": 44
+          "execution_count": 21
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import numpy as np\n",
+        "def get_similar_movies(model, movieId):\n",
+        "  movie_embed = (model.item_embeddings.T\n",
+        "                 / np.linalg.norm(model.item_embeddings, axis=1)).T\n",
+        "\n",
+        "  query_embed = movie_embed[movieId]\n",
+        "  similarity = np.dot(movie_embed, query_embed)\n",
+        "  most_similar = np.argsort(-similarity)[1:4]\n",
+        "\n",
+        "  return most_similar\n",
+        "\n",
+        "movie = \"Jumanji\"\n",
+        "movieId = movie_labels.tolist().index(movie[0])\n",
+        "print(f\"Most similar movies for {movie_labels[movieId]}: {movie_labels[get_similar_movies(model, movieId)]}\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "w9Z2Aqx3zjco",
+        "outputId": "62d40e52-4b25-4719-dc91-c7b235e76699"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Most similar movies for J: ['S' 'H' 'A']\n"
+          ]
         }
       ]
     }
@@ -465,7 +560,7 @@
   "metadata": {
     "colab": {
       "provenance": [],
-      "authorship_tag": "ABX9TyNXorBqMW2/+YzYbYIYq9WZ"
+      "authorship_tag": "ABX9TyNZ4AhmvBoiQ22/DwPBBS/r"
     },
     "kernelspec": {
       "display_name": "Python 3",
