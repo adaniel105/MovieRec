@@ -54,6 +54,6 @@ class LightFMRecommender:
 
 model = LightFM(learning_rate=0.05, loss="warp")
 model.fit(train, epochs=10, num_threads=2)
-test = Recommend()
+test = LightFMRecommender()
 result = test.create_rec(model, "Jumanji", 5)
 print(result)
