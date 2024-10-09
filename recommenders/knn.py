@@ -9,6 +9,9 @@ HOME = os.getcwd()
 
 
 class MovieRecommender:
+    def __init__(self):
+        pass
+
     def create_rec(self, movie_name, number_of_recommend):
         print("Finding similar movies...")
         try:
