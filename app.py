@@ -5,6 +5,7 @@ from fastapi.staticfiles import StaticFiles
 from pathlib import Path
 from recommenders.knn import MovieRecommender
 
+
 static_folder = Path(__file__).parent.resolve(strict=True) / "static"
 template_folder = Path(__file__).parent.resolve(strict=True) / "templates"
 
