@@ -15,7 +15,15 @@
     <div class="search-box">
       <form action="{{ url_for('recommend') }}" method="post">
         <input class="search-bar" type="text" name="movie_name" placeholder="Enter movie here...">
-        <button type="submit">&rarr;</button>
+        <div style="visibility: hidden;"> {{ model }} </div>
+        <button class="search-btn" type="submit">&rarr;</button>
+      </form>
+
+      <form action="{{ url_for('get_model') }}" method="post" id="modelForm">
+        <select class="model-type" form="modelForm">
+          <option value="knn">KNN</option>
+          <option value="LightFM">LightFM</option> 
+        </select>
       </form>
     </div>
   </header>
