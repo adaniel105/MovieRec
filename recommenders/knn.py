@@ -8,7 +8,7 @@ from sklearn.neighbors import NearestNeighbors
 HOME = os.getcwd()
 
 
-class MovieRecommender:
+class KNNRecommender:
     def __init__(self):
         pass
 

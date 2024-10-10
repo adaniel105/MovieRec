@@ -11,12 +11,15 @@ movies = pd.read_csv(f"{HOME}/data/movies.csv")
 movie_titles = movies["title"].str.lower().copy()
 train = data["train"]
 
+model = LightFM(learning_rate=0.05, loss="warp")
+model.fit(train, epochs=10, num_threads=2)
+
 
 class LightFMRecommender:
     def __init__(self):
         pass
 
-    def create_rec(self, model, movie_name, number_of_recommend):
+    def create_rec(self, movie_name, number_of_recommend):
         try:
             self.model = model
             self.movie_titles = movie_titles
@@ -50,10 +53,3 @@ class LightFMRecommender:
             self.get_similar_ids(model, similar_ids, self.number_of_recommend)
         ]
         return similar_movies.tolist()
-
-
-model = LightFM(learning_rate=0.05, loss="warp")
-model.fit(train, epochs=10, num_threads=2)
-test = LightFMRecommender()
-result = test.create_rec(model, "Jumanji", 5)
-print(result)
