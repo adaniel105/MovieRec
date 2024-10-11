@@ -13,21 +13,22 @@
   <header>
     <h1>MovieRec</h1>  
     <div class="search-box">
-      <form action="{{ url_for('recommend') }}" method="post">
-        <input class="search-bar" type="text" name="movie_name" placeholder="Enter movie here...">
-        <div style="visibility: hidden;"> {{ model }} </div>
-        <button class="search-btn" type="submit">&rarr;</button>
-      </form>
-
-      <form action="{{ url_for('get_model') }}" method="post" id="modelForm">
-        <select class="model-type" form="modelForm">
-          <option value="knn">KNN</option>
-          <option value="LightFM">LightFM</option> 
-        </select>
-      </form>
-    </div>
-  </header>
-
+      <form action="{{ url_for('recommend') }}" method="post" id="query">
+        <span class="model">
+          <label for="model">Model:</label>
+          <select name="model" id="model" form="query">
+            <option>--Select model options below--</option>
+            <option value="knn">KNN</option>
+            <option value="lightfm">LightFM</option> 
+          </select>
+        </span>
+        <span class="movie_name">
+          <label for="movie_name">Query:</label>
+          <input class="search-bar" type="text" name="movie_name" placeholder="Enter movie here i.e Jumanji ">
+        </span>
+        <button class="search-btn" type="submit">Recommend</button>
+      </form>       
+  </header>    
   <div class="movie-preview">
     {% if movie_list %}
     <ul>
