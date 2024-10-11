@@ -20,21 +20,14 @@ async def index(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
 
-@app.post("/get_model", response_class=HTMLResponse)
-async def get_model(request: Request, value: str = Form(...)):
-    model = lfm.LightFMRecommender() if value == "lightfm" else knn.KNNRecommender()
-    return templates.TemplateResponse(
-        "index.html", {"request": request, "model": model}
-    )
-
-
 @app.post("/recommend")
 async def recommend(
     request: Request,
     movie_name: str = Form(...),
-    model: str = Form(...),
+    model=Form(...),
     number_of_recommend: int = 5,
 ):
+    model = lfm.LightFMRecommender() if model == "lightfm" else knn.KNNRecommender()
     movie_list = model.create_rec(
         movie_name=movie_name, number_of_recommend=number_of_recommend
     )
