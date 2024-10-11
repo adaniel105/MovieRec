@@ -1,14 +1,11 @@
-import os
-import pandas as pd
 import numpy as np
 from lightfm import LightFM
 from lightfm.datasets import fetch_movielens
+from data import data_preprocessing
 
-HOME = os.getcwd()
-
+movies = data_preprocessing.movies
+movie_titles = data_preprocessing.movie_titles
 data = fetch_movielens(genre_features=True)
-movies = pd.read_csv(f"{HOME}/data/movies.csv")
-movie_titles = movies["title"].str.lower().copy()
 train = data["train"]
 
 model = LightFM(learning_rate=0.05, loss="warp")
@@ -22,14 +19,15 @@ class LightFMRecommender:
     def create_rec(self, movie_name, number_of_recommend):
         try:
             self.model = model
-            self.movie_titles = movie_titles
+            self.movie_titles = movies["title"]
             self.movie_name = movie_name
             self.number_of_recommend = number_of_recommend
             similar_ids = self.get_similar_ids(model, movie_name, number_of_recommend)
-            recommendations = self.get_instances(model, similar_ids, movie_titles)
+            recommendations = self.get_instances(model, similar_ids, self.movie_titles)
             return recommendations
-        except:
-            print("Movie not found!")
+        except Exception:
+            err_msg = ["Movie not found!"]
+            return err_msg
 
     def get_similar_ids(self, model, movie_name, number_of_recommend):
         similar_ids = movie_titles.index[

@@ -13,7 +13,6 @@ class KNNRecommender:
         pass
 
     def create_rec(self, movie_name, number_of_recommend):
-        print("Finding similar movies...")
         try:
             ratings, movies, movie_titles, idd_ = self.get_instances(movie_name)
             self.movie_name = movie_name
@@ -33,8 +32,9 @@ class KNNRecommender:
             neighbour_ids = self.predict_(self.idd_, matrix_crs, k=number_of_recommend)
             recommendations = self.recommend(neighbour_ids, movie_titles)
             return recommendations
-        except:
-            print("Movie not found")
+        except Exception:
+            err_msg = ["Movie not found!"]
+            return err_msg
 
     def matrix(self, df):
 
