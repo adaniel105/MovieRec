@@ -1,7 +1,11 @@
 import pandas as pd
-import re
+import os, re
 
-movies = pd.read_csv("movies.csv")
+HOME = os.getcwd()
+movies = pd.read_csv(f"{HOME}/data/movies.csv")
+movie_titles = movies["title"].str.lower().copy()
+
+
 movies["year"] = 0
 
 
@@ -14,6 +18,3 @@ def split_title_and_yr(df):
                 movies["year"][row_idx] = int(m)  # refactor with a nicer pd function
 
         movies["title"][row_idx] = movies["title"][row_idx].split("(")[0].strip()
-
-
-split_title_and_yr(movies)
