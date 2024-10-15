@@ -7,7 +7,7 @@ This similarity or "nearness in distance" is calculated using the cosine similar
 
 The dataset used is a subset of the MovieLens dataset, consisting of 100,000 ratings of movies (of varying genres) by users.
 
-## Eval scores on test set
+## Eval. scores
 
 LightFM
 
