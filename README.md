@@ -7,9 +7,10 @@ This similarity or "nearness in distance" is calculated using the cosine similar
 
 The dataset used is a subset of the MovieLens dataset, consisting of 100,000 ratings of movies (of varying genres) by users.
 
-## Model description 
+## Eval. scores
 
+LightFM
 
-## Evaluation metrics
+- Precision@k: 0.15
 
-
+- AUC score: 0.95
