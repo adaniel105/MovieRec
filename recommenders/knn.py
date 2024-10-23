@@ -5,6 +5,7 @@ import sklearn
 from scipy.sparse import csr_matrix
 from sklearn.neighbors import NearestNeighbors
 
+
 HOME = os.getcwd()
 
 
@@ -12,7 +13,7 @@ class KNNRecommender:
     def __init__(self):
         pass
 
-    def create_rec(self, movie_name, number_of_recommend):
+    def create_rec(self, movie_name: str, number_of_recommend: int) -> list[str]:
         try:
             ratings, movies, movie_titles, idd_ = self.get_instances(movie_name)
             self.movie_name = movie_name
@@ -36,7 +37,7 @@ class KNNRecommender:
             err_msg = ["Movie not found!"]
             return err_msg
 
-    def matrix(self, df):
+    def matrix(self, df: pd.DataFrame):
 
         user_unique = len(df["userId"].unique())
         movie_unique = len(df["movieId"].unique())
@@ -60,7 +61,14 @@ class KNNRecommender:
 
         return matrix_crs, user_mapper, movie_mapper, user_inv_mapper, movie_inv_mapper
 
-    def predict_(self, movie_id, data, k, metric="cosine", show_distance=False):
+    def predict_(
+        self,
+        movie_id: int,
+        data: pd.DataFrame,
+        k: int,
+        metric="cosine",
+        show_distance=False,
+    ):
 
         neighbour_ids = []
 
@@ -77,7 +85,7 @@ class KNNRecommender:
         neighbour_ids.pop(0)
         return neighbour_ids
 
-    def get_instances(self, movie_name):
+    def get_instances(self, movie_name: str):
 
         ratings = pd.read_csv(f"{HOME}/data/ratings.csv")
         movies = pd.read_csv(f"{HOME}/data/movies.csv")
@@ -94,5 +102,5 @@ class KNNRecommender:
         idd_ = int(idd_[idd_.movie_id.notna()]["movie_id"].iloc[0])
         return ratings, movies, movie_titles, idd_
 
-    def recommend(self, similar_ids, movie_titles):
+    def recommend(self, similar_ids: list[int], movie_titles: list[str]):
         return [movie_titles[i] for i in similar_ids]

@@ -16,7 +16,7 @@ class LightFMRecommender:
     def __init__(self):
         pass
 
-    def create_rec(self, movie_name, number_of_recommend):
+    def create_rec(self, movie_name: str, number_of_recommend: int) -> list[str]:
         try:
             self.model = model
             self.movie_titles = movies["title"]
@@ -29,7 +29,9 @@ class LightFMRecommender:
             err_msg = ["Movie not found!"]
             return err_msg
 
-    def get_similar_ids(self, model, movie_name, number_of_recommend):
+    def get_similar_ids(
+        self, model, movie_name: str, number_of_recommend: int
+    ) -> list[int]:
         similar_ids = movie_titles.index[
             movie_titles.str.contains(str(movie_name).lower())
         ].tolist()
@@ -46,7 +48,9 @@ class LightFMRecommender:
 
         return most_similar
 
-    def get_instances(self, model, similar_ids, movie_titles):
+    def get_instances(
+        self, model, similar_ids: list[int], movie_titles: list[str]
+    ) -> list[str]:
         similar_movies = movie_titles[
             self.get_similar_ids(model, similar_ids, self.number_of_recommend)
         ]
