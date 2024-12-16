@@ -3,7 +3,7 @@ from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from pathlib import Path
-from recommenders import knn, lfm
+from recommenders import knn , lfm
 
 
 static_folder = Path(__file__).parent.resolve(strict=True) / "static"
@@ -28,6 +28,7 @@ async def recommend(
     number_of_recommend: int = 5,
 ):
     model = lfm.LightFMRecommender() if model == "lightfm" else knn.KNNRecommender()
+
     movie_list = model.create_rec(
         movie_name=movie_name, number_of_recommend=number_of_recommend
     )
