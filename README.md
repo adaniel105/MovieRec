@@ -14,3 +14,15 @@ LightFM
 - Precision@k: 0.15
 
 - AUC score: 0.95
+
+## HOW TO RUN
+
+'''python
+ cd MovieRec
+ pip install uv
+ uv sync
+ uv run fastapi dev app.py
+'''
+
+## WIP
+ - [ ] Fix/remove LightFM
