@@ -183,6 +183,17 @@ wheels = [
 ]
 
 [[package]]
+name = "lightfm"
+version = "1.17"
+source = { git = "https://github.com/daviddavo/lightfm#f0eb500ead54ab65eb8e1b3890337a7223a35114" }
+dependencies = [
+    { name = "numpy" },
+    { name = "requests" },
+    { name = "scikit-learn" },
+    { name = "scipy" },
+]
+
+[[package]]
 name = "markdown-it-py"
 version = "3.0.0"
 source = { registry = "https://pypi.org/simple" }
@@ -249,6 +260,7 @@ dependencies = [
     { name = "fastapi" },
     { name = "fastapi-cli" },
     { name = "jinja2" },
+    { name = "lightfm" },
     { name = "numpy" },
     { name = "pandas" },
     { name = "requests" },
@@ -261,6 +273,7 @@ requires-dist = [
     { name = "fastapi", specifier = ">=0.115.6" },
     { name = "fastapi-cli", specifier = ">=0.0.7" },
     { name = "jinja2", specifier = ">=3.1.4" },
+    { name = "lightfm", git = "https://github.com/daviddavo/lightfm" },
     { name = "numpy", specifier = ">=2.2.0" },
     { name = "pandas", specifier = ">=2.2.3" },
     { name = "requests", specifier = ">=2.32.3" },
