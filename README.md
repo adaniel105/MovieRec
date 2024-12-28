@@ -17,12 +17,12 @@ LightFM
 
 ## HOW TO RUN
 
-'''python
+```python
  cd MovieRec
  pip install uv
  uv sync
  uv run fastapi dev app.py
-'''
+```
 
 ## WIP
  - [ ] Fix/remove LightFM
