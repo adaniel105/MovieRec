@@ -8,7 +8,9 @@ from sklearn.neighbors import NearestNeighbors
 
 HOME = os.getcwd()
 
-
+'''
+Recommendation by nearest neighbors algorithm
+'''
 class KNNRecommender:
     def __init__(self):
         pass
