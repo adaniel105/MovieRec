@@ -11,6 +11,9 @@ train = data["train"]
 model = LightFM(learning_rate=0.05, loss="warp")
 model.fit(train, epochs=10, num_threads=2)
 
+'''
+WIP: Add LightFM Recommender
+'''
 
 class LightFMRecommender:
     def __init__(self):
